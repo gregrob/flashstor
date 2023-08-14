@@ -1,0 +1,15 @@
+# Ignore password files
+**/secrets/*.pwd
+**/secrets/*.vault
+
+# Ignore the github token
+github-token.txt
+
+# Ignore Austor Recycle Bin
+\#Recycle/*
+
+
+#EXAMPLE
+# authelia host specific
+#docker/authelia/data/host/config-dynamic/*
+#!docker/authelia/data/host/config-dynamic/.gitkeep
