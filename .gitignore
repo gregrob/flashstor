@@ -9,7 +9,6 @@ github-token.txt
 \#Recycle/*
 
 
-#EXAMPLE
-# authelia host specific
-#docker/authelia/data/host/config-dynamic/*
-#!docker/authelia/data/host/config-dynamic/.gitkeep
+# portainer host specific
+docker/portainer/data/host/*
+!docker/portainer/data/host/.gitkeep
