@@ -5,7 +5,7 @@ All Flashstor server related scripts and configurations.
 The following folder structure is used:
 ```
     .
-    └── server              
+    └── server
      └── containers         # common scripts for containers
       └── <container_name>  # container - call scripts to start / stop from here
        ├── data             # persistent volume
