@@ -9,6 +9,12 @@ github-token.txt
 \#Recycle/*
 
 
+# jellyfin host specific
+docker/jellyfin/data/host/cache/*
+docker/jellyfin/data/host/config/*
+!docker/jellyfin/data/host/cache/.gitkeep
+!docker/jellyfin/data/host/config/.gitkeep
+
 # portainer host specific
 docker/portainer/data/host/*
 !docker/portainer/data/host/.gitkeep

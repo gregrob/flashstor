@@ -1,0 +1,41 @@
+version: '3'
+services:
+  # ------------------------------------------------
+  # Setup Jellyfin
+  #   Configuration for Austor
+  #
+  # https://hub.docker.com/r/jellyfin/jellyfin
+  # ------------------------------------------------
+  jellyfin:
+    #image:          jellyfin/jellyfin:10.8.9
+    image:          jellyfin/jellyfin:10.8.10
+
+    container_name: jellyfin
+    restart:        unless-stopped
+    
+    # Asustor containers run as root
+    #user: $DOCKER_UID:$DOCKER_GID
+    #group_add:
+    #  - "103" # /dev/dri/renderD128
+    #  - "44"  # /dev/dri/card0
+
+    network_mode:   host # required in order to use DLNA
+       
+    volumes:
+      # Pass local timezone information to the container
+      #- /etc/timezone:/etc/timezone:ro # not for Austor
+      - /etc/localtime:/etc/localtime:ro
+
+      - ./data/host/cache:/config
+      - ./data/host/config:/cache
+      
+      # Libraries
+      - /share/Public:/media/Public:ro
+      #TODO
+    
+    devices:     
+      - /dev/dri:/dev/dri # hw transcoding
+      #- /dev/dri/renderD128:/dev/dri/renderD128 # hw transcoding
+
+    environment:
+      JELLYFIN_PublishedServerUrl: http://jellyfin.max.lan #TODO
