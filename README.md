@@ -13,23 +13,22 @@ For applications like Portainer and Jellyfin you can decide when and what versio
 ## Docker Containers
 First make sure to configure any environment variables within the script `/docker/docker-env.sh`.  For example `TZ`. <br />
 
-To START a docker container, change into the folder of the container and type `../docker-start.sh v2`.  For example `./server/docker/jellyfin/`.  <br />
+To START a docker container, change into the folder of the container and type `../docker-start.sh v2`. <br />
+To STOP a docker container, change into the folder of the container and type `../docker-stop.sh v2`. <br />
+For example to start Jellyfin: <br />
+```
+cd /share/server/docker/jellyfin/
+../docker-start.sh v2
+```
 
-To STOP a docker container, change into the folder of the container and type `../docker-stop.sh v2`.  For example `./server/docker/jellyfin/`.  <br />
-
-
-
-All Flashstor server related scripts and configurations.
-The following folder structure is used:
+The following directory structure is being followed: <br />
 ```
     .
     └── server
-     └── containers         # common scripts for containers
-      └── <container_name>  # container - call scripts to start / stop from here
-       ├── data             # persistent volume
-       |├── common          # persistent volume - common across all hosts
-       |└── host            # persistent volume - specific to a host
+     └── docker             
+      └── <container_name>  # container - call scripts to START / STOP from here
+       ├── data             
+       | ├── common         # persistent data - common across all hosts (e.g. config files)
+       | └── host           # persistent data - specific to the host (e.g. databases)
        └── secrets          # passwords
 ```
-
-## containers
