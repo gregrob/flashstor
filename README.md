@@ -11,6 +11,13 @@ For applications like Portainer and Jellyfin you can decide when and what versio
 <img src="./images/mediamode.png" width="60%" height="60%">
 
 ## Docker Containers
+First make sure to configure any environment variables within the script `/docker/docker-env.sh`.  For example `TZ`. <br />
+
+To START a docker container, change into the folder of the container and type `../docker-start.sh v2`.  For example `./server/docker/jellyfin/`.  <br />
+
+To STOP a docker container, change into the folder of the container and type `../docker-stop.sh v2`.  For example `./server/docker/jellyfin/`.  <br />
+
+
 
 All Flashstor server related scripts and configurations.
 The following folder structure is used:
