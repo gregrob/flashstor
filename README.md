@@ -1,4 +1,4 @@
-# flashstor
+# flashstor server
 
 All Flashstor server related scripts and configurations.
 
