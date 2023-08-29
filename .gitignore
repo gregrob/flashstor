@@ -5,6 +5,10 @@
 # Ignore the github token
 github-token.txt
 
+# backup folder
+backup/*
+!backup/.gitkeep
+
 # Ignore Austor Recycle Bin
 \#Recycle/*
 
