@@ -68,3 +68,7 @@ services:
       - ./data/host/config:/etc/gitlab
       - ./data/host/logs:/var/log/gitlab
       - ./data/host/data:/var/opt/gitlab
+
+    labels:
+      # docker-volume-backup will stop the container during backup
+      - docker-volume-backup.stop-during-backup=true

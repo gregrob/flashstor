@@ -13,6 +13,9 @@ then
     export HOSTNAME=$HOSTNAME
     echo "Exported HOSTNAME=$HOSTNAME"
 
+    export ENV_URL="flashstor.max.lan"
+    echo "Exported ENV_URL=$ENV_URL"
+
     export TZ="Australia/Melbourne"
     echo "Exported TZ=$TZ"
 
