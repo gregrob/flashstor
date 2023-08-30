@@ -7,7 +7,9 @@ services:
   # ---------------------------------------------
   docker-volume-backup:
     #image:          offen/docker-volume-backup:v2.22.1
-    image:          offen/docker-volume-backup:v2.25.1
+    #image:          offen/docker-volume-backup:v2.25.1
+    image:          ghcr.io/offen/docker-volume-backup:v2.31.0
+
     container_name: docker-volume-backup
     restart:        unless-stopped
 
