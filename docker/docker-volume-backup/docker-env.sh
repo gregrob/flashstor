@@ -11,11 +11,14 @@ then
     echo "Setting up SPECIFIC environment for docker ..."
     echo "----------------------------------------------"
 
-    #export EXAMPLE="example var"
-    #echo "Exported EXAMPLE=$EXAMPLE"
+    export ENV_DVB_SMTP_PASSWORD=$ENV_SMTP_PASSWORD
+    echo "Exported ENV_DVB_SMTP_PASSWORD=$ENV_DVB_SMTP_PASSWORD"
 
-    export ENV_SMTP_PASSWORD=$(cat ./secrets/gmail.pwd)
-    echo "Exported ENV_SMTP_PASSWORD=$ENV_SMTP_PASSWORD"
+    export ENV_DVB_SMTP_USER_NAME=$ENV_SMTP_USER_NAME
+    echo "Exported ENV_DVB_SMTP_USER_NAME=$ENV_DVB_SMTP_USER_NAME"
+
+    export ENV_DVB_NOTIFICATION_EMAIL=$ENV_NOTIFICATION_EMAIL
+    echo "Exported ENV_DVB_NOTIFICATION_EMAIL=$ENV_DVB_NOTIFICATION_EMAIL"
 
     # This is always +1 (e.g. a value of 9 keeps 10 backups)
     export ENV_KEEP_LAST_BACKUPS="9"

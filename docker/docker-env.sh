@@ -16,6 +16,17 @@ then
     export TZ="Australia/Melbourne"
     echo "Exported TZ=$TZ"
 
+    export ENV_SMTP_PASSWORD=$(cat ../secrets/gmail.pwd)
+    echo "Exported ENV_SMTP_PASSWORD=$ENV_SMTP_PASSWORD"
+
+    export ENV_SMTP_USER_NAME=$(cat ../secrets/gmail_user.secret)
+    echo "Exported ENV_SMTP_USER_NAME=$ENV_SMTP_USER_NAME"
+
+    export ENV_NOTIFICATION_EMAIL=$(cat ../secrets/notify_user_email.secret)
+    echo "Exported ENV_NOTIFICATION_EMAIL=$ENV_NOTIFICATION_EMAIL"
+
+
+
     echo ""
 
 else

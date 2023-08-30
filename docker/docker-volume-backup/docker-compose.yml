@@ -8,7 +8,6 @@ services:
   docker-volume-backup:
     #image:          offen/docker-volume-backup:v2.22.1
     image:          offen/docker-volume-backup:v2.25.1
-    #container_name: backup-creation-$HOSTNAME
     container_name: docker-volume-backup
     restart:        unless-stopped
 
@@ -37,7 +36,7 @@ services:
       # an URL that contains a comma, the values can be URL encoded to avoid ambiguities.
       # The below URL demonstrates how to send an email using the provided SMTP
       # configuration and credentials.
-      - NOTIFICATION_URLS=smtp://deepblue.max.lan@gmail.com:$ENV_SMTP_PASSWORD@smtp.gmail.com:587/?fromAddress=deepblue.max.lan@gmail.com&toAddresses=gregrob@mac.com
+      - NOTIFICATION_URLS=smtp://${ENV_DVB_SMTP_USER_NAME:?err}:${ENV_DVB_SMTP_PASSWORD:?err}@smtp.gmail.com:587/?fromAddress=${ENV_DVB_SMTP_USER_NAME:?err}&toAddresses=${ENV_DVB_NOTIFICATION_EMAIL:?err}
 
       # By default, notifications would only be sent out when a backup run fails
       # To receive notifications for every run, set `NOTIFICATION_LEVEL` to `info`
