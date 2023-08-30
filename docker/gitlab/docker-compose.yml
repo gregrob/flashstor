@@ -1,0 +1,53 @@
+version: '3.0'
+
+services:
+  # ------------------------------------------------
+  # Setup Gitlab
+  #   Configuration for Austor
+  #
+  #   To upgrade the image, first check the upgrade path:
+  #     https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/
+  #
+  #   Before doing any upgrade, check background migrations are finished:
+  #     admin->monitoring->background migrations
+  #
+  #   Failure to do these steps may corrupt the instance
+  #
+  # https://hub.docker.com/r/gitlab/gitlab-ce
+  # ------------------------------------------------
+  gitlab:
+    #image:          gitlab/gitlab-ce:12.10.14-ce.0 # upgrade step 1
+    #image:          gitlab/gitlab-ce:13.0.14-ce.0  # upgrade step 2
+    #image:          gitlab/gitlab-ce:13.1.11-ce.0  # upgrade step 3
+    #image:          gitlab/gitlab-ce:13.8.8-ce.0   # upgrade step 4
+    #image:          gitlab/gitlab-ce:13.12.15-ce.0 # upgrade step 5
+    #image:          gitlab/gitlab-ce:14.0.12-ce.0  # upgrade step 6     
+    #image:          gitlab/gitlab-ce:14.3.6-ce.0   # upgrade step 7
+    #image:          gitlab/gitlab-ce:14.9.5-ce.0   # upgrade step 8
+    #image:          gitlab/gitlab-ce:14.10.5-ce.0  # upgrade step 9
+    #image:          gitlab/gitlab-ce:15.0.5-ce.0   # upgrade step 10
+    #image:          gitlab/gitlab-ce:15.4.6-ce.0   # upgrade step 11
+    #image:          gitlab/gitlab-ce:15.11.13-ce.0 # upgrade step 13
+    image:          gitlab/gitlab-ce:16.3.0-ce.0
+
+    container_name: gitlab
+    restart:        unless-stopped
+
+    shm_size: '256m'
+
+    ports:
+      - "${ENV_GITLAB_SSH_PORT:?err}:22"                            # ssh
+      - "${ENV_GITLAB_HTTP_PORT:?err}:${ENV_GITLAB_HTTP_PORT:?err}" # http
+      #- "443:443"                                                   # https
+
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://${ENV_GITLAB_URL:?err}:${ENV_GITLAB_HTTP_PORT:?err}'
+        gitlab_rails['gitlab_shell_ssh_port'] = ${ENV_GITLAB_SSH_PORT:?err}
+
+        # Add any other gitlab.rb configuration here, each on its own line
+
+    volumes:
+      - ./data/host/config:/etc/gitlab
+      - ./data/host/logs:/var/log/gitlab
+      - ./data/host/data:/var/opt/gitlab

@@ -13,6 +13,14 @@ backup/*
 \#Recycle/*
 
 
+# gitlab host specific
+docker/gitlab/data/host/config/*
+docker/gitlab/data/host/data/*
+docker/gitlab/data/host/logs/*
+!docker/gitlab/data/host/config/.gitkeep
+!docker/gitlab/data/host/data/.gitkeep
+!docker/gitlab/data/host/logs/.gitkeep
+
 # jellyfin host specific
 docker/jellyfin/data/host/cache/*
 docker/jellyfin/data/host/config/*
