@@ -20,6 +20,12 @@ then
     export ENV_GITLAB_SSH_PORT=9022
     echo "Exported ENV_GITLAB_SSH_PORT=$ENV_GITLAB_SSH_PORT"
 
+    export ENV_GITLAB_SMTP_USER_NAME=$(cat ./secrets/gmail_user.pwd)
+    echo "Exported ENV_GITLAB_SMTP_USER_NAME=$ENV_GITLAB_SMTP_USER_NAME"
+
+    export ENV_GITLAB_SMTP_PASSWORD=$(cat ./secrets/gmail.pwd)
+    echo "Exported ENV_GITLAB_SMTP_PASSWORD=$ENV_GITLAB_SMTP_PASSWORD"
+
     echo ""
 
 else
