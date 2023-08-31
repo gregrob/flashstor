@@ -39,6 +39,9 @@ services:
     labels:
       NAME: "rabbitmq"
 
+      # docker-volume-backup will stop the container during backup
+      docker-volume-backup.stop-during-backup: true
+
 
   # ----------------------------------------------------------------------
   # MySQL service
@@ -69,6 +72,8 @@ services:
     labels:
       NAME: "mysql"
 
+      # docker-volume-backup will stop the container during backup
+      docker-volume-backup.stop-during-backup: true
 
   # ----------------------------------------------------------
   # HawkBit simulator
@@ -146,6 +151,9 @@ services:
     labels:
       NAME: "hawkbit"
       
+      # docker-volume-backup will stop the container during backup
+      docker-volume-backup.stop-during-backup: true
+
 
   # ----------------------------------
   # Adminer service
@@ -167,3 +175,5 @@ services:
     labels:
       NAME: "adminer"
 
+      # docker-volume-backup will stop the container during backup
+      docker-volume-backup.stop-during-backup: true
