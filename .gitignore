@@ -14,6 +14,10 @@ backup/*
 \#Recycle/*
 
 
+# dokuwiki-v1 specific
+docker/dokuwiki-v1/data/host/*
+!docker/dokuwiki-v1/data/host/.gitkeep
+
 # gitlab specific
 docker/gitlab/data/host/config/*
 docker/gitlab/data/host/data/*
