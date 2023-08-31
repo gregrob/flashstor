@@ -10,9 +10,11 @@ version: '3'
 
 services:
 
-  # ---------------------
+  # ----------------------------------
   # RabbitMQ service
-  # ---------------------
+  #
+  #  https://hub.docker.com/_/rabbitmq
+  # ----------------------------------
   rabbitmq:
     #image:                    "rabbitmq:3-management"
     #image:                    "rabbitmq:3.8.14-management"
@@ -23,7 +25,7 @@ services:
       RABBITMQ_DEFAULT_PASS: ${ENV_HAWKBIT_GENERIC_PWD:?err}
     volumes:
       - ./data/host/rabbitmq:/var/lib/rabbitmq
-    restart: always
+    restart: unless-stopped
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -37,12 +39,16 @@ services:
     labels:
       NAME: "rabbitmq"
 
-  # ---------------------
+
+  # ----------------------------------------------------------------------
   # MySQL service
-  #  database (dont use 8)
-  # ---------------------
+  #  database (dont use 8 until hawkbit is updated from 0.3.0M7 to 0.3.0M9)
+  #
+  #  https://hub.docker.com/_/mysql
+  # ----------------------------------------------------------------------
   mysql:
-    image:                  "mysql:5.7"
+    #image:                  "mysql:5.7"
+    image:                  "mysql:8.1.0"
     environment:
       MYSQL_DATABASE:       "hawkbit"
       MYSQL_USER:           "hawkbit"
@@ -51,7 +57,7 @@ services:
       MYSQL_ROOT_PASSWORD:  ${ENV_HAWKBIT_GENERIC_PWD:?err}
     volumes:
        - ./data/host/mysql:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
     # Database doesnt needs to be accessed outside container so comment out
     #ports:
     #  - "3307:3306"
@@ -63,9 +69,12 @@ services:
     labels:
       NAME: "mysql"
 
-  # ---------------------
+
+  # ----------------------------------------------------------
   # HawkBit simulator
-  # ---------------------
+  #
+  #  https://hub.docker.com/r/hawkbit/hawkbit-device-simulator
+  # ----------------------------------------------------------
   #hawkbit-simulator:
   #  image:                  "hawkbit/hawkbit-device-simulator:latest"
   #  depends_on:
@@ -80,19 +89,23 @@ services:
   #    - 'SPRING_RABBITMQ_PORT=5672'
   #    - 'SPRING_RABBITMQ_USERNAME=${ENV_HAWKBIT_GENERIC_USER:?err}'
   #    - 'SPRING_RABBITMQ_PASSWORD=${ENV_HAWKBIT_GENERIC_PWD:?err}'
-  #  restart: always
+  #  restart: unless-stopped
   #  ports:
   #    - "8083:8083"
   #  labels:
   #    NAME: "hawkbit-simulator"
 
-  # ---------------------
+
+  # -------------------------------------------------------
   # HawkBit service
   #  update server
-  # ---------------------
+  #
+  #  https://hub.docker.com/r/hawkbit/hawkbit-update-server
+  # -------------------------------------------------------
   hawkbit:
     #image:                  "hawkbit/hawkbit-update-server:latest-mysql"
-    image:                  "hawkbit/hawkbit-update-server:0.3.0M7-mysql"
+    #image:                  "hawkbit/hawkbit-update-server:0.3.0M7-mysql"
+    image:                  "hawkbit/hawkbit-update-server:0.3.0M9-mysql"
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -122,7 +135,7 @@ services:
     volumes:
       - ./data/host/hawkbit/data:/opt/hawkbit/data
       - ./data/host/hawkbit/artifactrepo:/opt/hawkbit/artifactrepo
-    restart: always
+    restart: unless-stopped
     ports:
       - "9090:8080"
     healthcheck:
@@ -133,6 +146,7 @@ services:
     labels:
       NAME: "hawkbit"
       
+
   # ----------------------------------
   # Adminer service
   #  database admin
@@ -147,7 +161,7 @@ services:
         condition: service_healthy
     environment:
       ADMINER_DEFAULT_SERVER: "mysql:3306"
-    restart: always
+    restart: unless-stopped
     ports:
       - "9091:8080"
     labels:
