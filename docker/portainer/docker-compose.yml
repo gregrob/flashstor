@@ -41,3 +41,6 @@ services:
       #- /etc/timezone:/etc/timezone:ro # not for Austor
       - /etc/localtime:/etc/localtime:ro
       
+    labels:
+      # docker-volume-backup will stop the container during backup
+      - docker-volume-backup.stop-during-backup=true
