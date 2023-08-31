@@ -29,7 +29,7 @@ The following directory structure is being followed: <br />
     .
     └── server
      └── docker
-      ├── docker-env.sh      # common container environment variables
+      ├── docker-env.sh      # common environment variables
       ├── secrets            # common secrets
       └── [container_name]   # container - call scripts to START / STOP from here
        ├── docker-env.sh     # container specific environment variables
