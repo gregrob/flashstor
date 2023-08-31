@@ -14,7 +14,7 @@ backup/*
 \#Recycle/*
 
 
-# gitlab host specific
+# gitlab specific
 docker/gitlab/data/host/config/*
 docker/gitlab/data/host/data/*
 docker/gitlab/data/host/logs/*
@@ -22,12 +22,22 @@ docker/gitlab/data/host/logs/*
 !docker/gitlab/data/host/data/.gitkeep
 !docker/gitlab/data/host/logs/.gitkeep
 
-# jellyfin host specific
+# hawkbit specific
+docker/hawkbit/data/host/hawkbit/artifactrepo/*
+docker/hawkbit/data/host/hawkbit/data/*
+docker/hawkbit/data/host/mysql/*
+docker/hawkbit/data/host/rabbitmq/*
+!docker/hawkbit/data/host/hawkbit/artifactrepo/.gitkeep
+!docker/hawkbit/data/host/hawkbit/data/.gitkeep
+!docker/hawkbit/data/host/mysql/.gitkeep
+!docker/hawkbit/data/host/rabbitmq/.gitkeep
+
+# jellyfin specific
 docker/jellyfin/data/host/cache/*
 docker/jellyfin/data/host/config/*
 !docker/jellyfin/data/host/cache/.gitkeep
 !docker/jellyfin/data/host/config/.gitkeep
 
-# portainer host specific
+# portainer specific
 docker/portainer/data/host/*
 !docker/portainer/data/host/.gitkeep
