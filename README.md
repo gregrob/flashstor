@@ -25,10 +25,11 @@ The following directory structure is being followed: <br />
 ```
     .
     └── server
-     └── docker             
+     └── docker
+      ├── secrets           # common secrets             
       └── <container_name>  # container - call scripts to START / STOP from here
        ├── data             
        | ├── common         # persistent data - common across all hosts (e.g. config files)
        | └── host           # persistent data - specific to the host (e.g. databases)
-       └── secrets          # passwords
+       └── secrets          # container specific secrets
 ```
