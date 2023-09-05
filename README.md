@@ -39,4 +39,6 @@ The following directory structure is being followed: <br />
        └── secrets           # container specific secrets
 ```
 ### Backup
-Docker container that contain presistent writable data are stopped before backup.  `label docker-volume-backup.stop-during-backup=true` is set within the `docker-compose.yml` of the container to acheive this.
+Docker container that contain presistent writable data are stopped before backup.  `label docker-volume-backup.stop-during-backup=true` is set within the `docker-compose.yml` of the container to acheive this. <br />
+
+When restoring backups from `/backup/*.tar.gz` remember to execute tar with the `--numeric-owner parameter`.  For example `sudo tar -xzvf projects.tar.gz --numeric-owner -C /tmp/`.  This will make sure the volumes are extracted with their original owner and group.
