@@ -14,6 +14,12 @@ then
     export ENV_JELLYFIN_URL=$ENV_URL
     echo "Exported ENV_JELLYFIN_URL=$ENV_JELLYFIN_URL"
 
+    export ENV_JELLYFIN_PORT=8096
+    echo "Exported ENV_JELLYFIN_PORT=$ENV_JELLYFIN_PORT"
+
+    export ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$(cat ./secrets/local_unsorted_media_path.secret)
+    echo "Exported ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA"
+
     echo ""
 
 else

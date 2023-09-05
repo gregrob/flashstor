@@ -30,15 +30,17 @@ services:
       - ./data/host/config:/cache
       
       # Libraries
-      - /share/Public:/media/Public:ro
-      #TODO
+      - ${ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA:?err}:/media/unsorted:ro
+
+      - /share/Public:/media/Public:ro #TODO - CLEAN THIS SHARE OUT
+      #TODO - SORTED MEDIA PATH
     
     devices:     
       - /dev/dri:/dev/dri # hw transcoding
       #- /dev/dri/renderD128:/dev/dri/renderD128 # hw transcoding
 
     environment:
-      JELLYFIN_PublishedServerUrl: http://${ENV_JELLYFIN_URL:?err}
+      JELLYFIN_PublishedServerUrl: http://${ENV_JELLYFIN_URL:?err}:${ENV_JELLYFIN_PORT:?err}
 
     labels:
       # docker-volume-backup will stop the container during backup
