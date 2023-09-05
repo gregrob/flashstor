@@ -24,6 +24,10 @@ services:
       - DOKUWIKI_WIKI_NAME=max.lan notes
 
     volumes:
-      # As per the bitnami dockerhub instructions - to the share please apply 'chown 1001:users * -R'
+      # NOTE: As this is a non-root container, the mounted files and directories must have the proper permissions for the UID 1001.
+      #       On the QNAP, this was 1001:0 ('chown 1001:0 * -R')
       - ./data/host/:/bitnami/dokuwiki/
 
+    labels:
+      # docker-volume-backup will stop the container during backup
+      - docker-volume-backup.stop-during-backup=true
