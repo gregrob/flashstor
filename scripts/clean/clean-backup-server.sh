@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Check backup folder matches share.
+# Cleans a backup folder (deleting extra files).
 # Uses rsync recomendation at: https://unix.stackexchange.com/questions/170693/compare-directory-trees-regarding-file-name-and-size-and-date
 #
 # Just date/time and size: rsync -nrvh --delete source/ destination/
@@ -25,7 +25,7 @@ BASE_DIR_SHARE='/share'
 BASE_DIR_BACKUP='/share/USB1/backup'
 
 # Base options for rsync
-OPTIONS_BASE_RSYNC='-nrvh --delete'
+OPTIONS_BASE_RSYNC='-rvh --delete'
 
 
 # Draw a line
@@ -36,21 +36,14 @@ draw_line () {
 
 
 # Check script is called from the correct location
-check_backup () {
+clean_backup () {
     draw_line
-    echo 'Checking share \'$1
+    echo 'Cleaning share \'$1
     draw_line
 
-    # Handle the second argument as an exclude directive
-    if [ -z "$2" ]
-      then
-        # No exclude directive
-        OPTIONS_FINAL_RSYNC=$OPTIONS_BASE_RSYNC 
+    echo
 
-      else
-        # Exclude directive
-        OPTIONS_FINAL_RSYNC=$OPTIONS_BASE_RSYNC" --exclude "$2
-    fi
+    OPTIONS_FINAL_RSYNC=$OPTIONS_BASE_RSYNC 
 
     echo "command: "$OPTIONS_FINAL_RSYNC
     rsync $OPTIONS_FINAL_RSYNC $BASE_DIR_SHARE/$1/ $BASE_DIR_BACKUP/$1/
@@ -59,35 +52,4 @@ check_backup () {
 }
 
 
-# Full check of the NAS
-full_nas_check() {
-    check_backup "appliances"
-    check_backup "backup"
-    check_backup "camera-output"
-    check_backup "development"
-
-    check_backup "incoming"
-
-    check_backup "misc"
-    check_backup "other"
-    check_backup "photo-library"
-    check_backup "photo-library-temp"
-    check_backup "photos"
-
-    check_backup "qmailagent"
-    check_backup "scanner-output"
-    check_backup "server"
-    check_backup "server-backup"
-    check_backup "software"
-    check_backup "tftp"
-
-    check_backup "transfer"
-    check_backup "video"
-    check_backup "vm" "virtualbox"
-
-}
-
-
-full_nas_check
-
-
+clean_backup "server"
