@@ -68,6 +68,7 @@ full_nas_check() {
 
     check_backup "incoming"
 
+    check_backup "media"
     check_backup "misc"
     check_backup "other"
     check_backup "photo-library"
