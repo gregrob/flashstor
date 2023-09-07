@@ -66,6 +66,7 @@ full_nas_check() {
     check_backup "camera-output"
     check_backup "development"
 
+    check_backup "downloads"
     check_backup "incoming"
 
     check_backup "media"
