@@ -17,6 +17,9 @@ then
     export ENV_JELLYFIN_PORT=8096
     echo "Exported ENV_JELLYFIN_PORT=$ENV_JELLYFIN_PORT"
 
+    export ENV_JELLYFIN_LOCAL_SORTED_MEDIA=$(cat ./secrets/local_sorted_media_path.secret)
+    echo "Exported ENV_JELLYFIN_LOCAL_SORTED_MEDIA=$ENV_JELLYFIN_LOCAL_SORTED_MEDIA"
+
     export ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$(cat ./secrets/local_unsorted_media_path.secret)
     echo "Exported ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA"
 

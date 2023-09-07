@@ -30,10 +30,8 @@ services:
       - ./data/host/config:/cache
       
       # Libraries
+      - ${ENV_JELLYFIN_LOCAL_SORTED_MEDIA:?err}:/media/sorted:ro
       - ${ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA:?err}:/media/unsorted:ro
-
-      - /share/Public:/media/Public:ro #TODO - CLEAN THIS SHARE OUT
-      #TODO - SORTED MEDIA PATH
     
     devices:     
       - /dev/dri:/dev/dri # hw transcoding
