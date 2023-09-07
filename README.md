@@ -43,3 +43,10 @@ Docker container that contain presistent writable data are stopped before backup
 
 ### Restoring Backup
 When restoring backups from `/backup/*.tar.gz` remember to execute tar with the `--numeric-owner` parameter.  For example `sudo tar -xzvf projects.tar.gz --numeric-owner -C /tmp/`.  This will make sure the volumes are extracted with their original owner and group which the container will be expecting.
+
+### git
+The execution bits of scripts can cause git in Windows to show a mode change.  The configuration `core.filemode` can be used to address this:
+1. The default for this configuration is true if not specified in the [config file](https://git-scm.com/docs/git-config).  git also sets the configuraiton in the repository to `core.filemode=true`.  Unset the repository setting with `git config --unset core.filemode`.
+2. On your Windows maching set the global setting to false with `git config --global core.fileMode false`.
+
+Because the order of priority is --local, --global then --system; Linux takes the setting as true and Windows as false.
