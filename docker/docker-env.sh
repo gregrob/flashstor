@@ -19,6 +19,18 @@ then
     export TZ="Australia/Melbourne"
     echo "Exported TZ=$TZ"
 
+
+    #export ENV_DOCKER_USER=$USER
+    export ENV_DOCKER_USER="greg"
+    echo "Exported ENV_DOCKER_USER=$ENV_DOCKER_USER"
+
+    export ENV_DOCKER_UID=$(id -u $ENV_DOCKER_USER)
+    echo "Exported ENV_DOCKER_UID=$ENV_DOCKER_UID"
+
+    export ENV_DOCKER_GID=$(id -g $ENV_DOCKER_USER)
+    echo "Exported ENV_DOCKER_GID=$ENV_DOCKER_GID"
+
+
     export ENV_SMTP_PASSWORD=$(cat ../secrets/gmail.pwd)
     echo "Exported ENV_SMTP_PASSWORD=$ENV_SMTP_PASSWORD"
 

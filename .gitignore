@@ -45,3 +45,7 @@ docker/jellyfin/data/host/config/*
 # portainer specific
 docker/portainer/data/host/*
 !docker/portainer/data/host/.gitkeep
+
+# qbittorrent specific
+docker/qbittorrent/data/host/config/*
+!docker/qbittorrent/data/host/config/.gitkeep

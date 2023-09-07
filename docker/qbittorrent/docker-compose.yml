@@ -1,0 +1,33 @@
+version: '3'
+services:
+  # ------------------------------------------------
+  # Setup qBittorrent
+  #   Configuration for Austor
+  #
+  # https://hub.docker.com/r/linuxserver/qbittorrent
+  # ------------------------------------------------
+  qbittorrent:
+    image:          linuxserver/qbittorrent:4.5.5
+
+    container_name: qbittorrent
+    restart:        unless-stopped
+    
+    network_mode:   bridge
+    ports:
+      - ${ENV_QBITTORRENT_UI_PORT:?err}:${ENV_QBITTORRENT_UI_PORT:?err}                # web ui
+      - ${ENV_QBITTORRENT_TORRENT_PORT:?err}:${ENV_QBITTORRENT_TORRENT_PORT:?err}      # torrent
+      - ${ENV_QBITTORRENT_TORRENT_PORT:?err}:${ENV_QBITTORRENT_TORRENT_PORT:?err}/udp  # torrent
+       
+    volumes:
+      - ./data/host/config:/config
+      - /share/downloads/qbittorrent:/downloads
+      
+    environment:
+      - PUID=${ENV_DOCKER_UID:?err}
+      - PGID=${ENV_DOCKER_GID:?err}
+      - TZ=${TZ:?err}
+      - WEBUI_PORT=${ENV_QBITTORRENT_UI_PORT:?err}
+
+    labels:
+      # docker-volume-backup will stop the container during backup
+      - docker-volume-backup.stop-during-backup=true
