@@ -68,7 +68,6 @@ full_nas_check() {
 
     check_backup "downloads"
     check_backup "incoming"
-
     check_backup "media"
     check_backup "misc"
     check_backup "other"
@@ -86,6 +85,7 @@ full_nas_check() {
     check_backup "transfer"
     check_backup "video"
     check_backup "vm" "virtualbox"
+    check_backup "Web"
 
 }
 
