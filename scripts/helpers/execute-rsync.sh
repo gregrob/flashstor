@@ -87,3 +87,12 @@ check_backup () {
 }
 
 
+
+# Execute a clean of a share
+#  $1 - share
+#  $2 - extended rsync options (i.e. exclude directories)
+#
+clean_backup () {
+
+    rsync_command "${BASE_DIR_SHARE}/${1}/" "${BASE_DIR_BACKUP}/${1}/" "${OPT_BASE_RSYNC_EX}" "${2}"
+}

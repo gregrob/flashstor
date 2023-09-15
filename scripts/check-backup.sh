@@ -16,7 +16,7 @@ full_nas_check_static() {
 
     check_backup "downloads"
     check_backup "incoming"
-    check_backup "media"
+    check_backup "media" "--exclude /library"  ### Exclude symlinks to libraries
     check_backup "misc"
     check_backup "other"
     check_backup "photo-library"
@@ -25,21 +25,21 @@ full_nas_check_static() {
 
     check_backup "qmailagent"
     check_backup "scanner-output"
-    # dynamic - check_backup "server"
+    ### dynamic - check_backup "server"
     check_backup "server-backup"
     check_backup "software"
     check_backup "tftp"
 
     check_backup "transfer"
     check_backup "video"
-    check_backup "vm" "--exclude virtualbox"
-    check_backup "Web"
+    check_backup "vm" "--exclude /virtualbox"  ### Exclude virtualbox VM's
+    check_backup "Web" "--exclude /qnap/readme.txt"  ### Exclude symlink to txt file
 
 }
 
 # Full check of the NAS - dynamic folders
 full_nas_check_dynamic() {
-    check_backup "server"
+    check_backup "server" "--exclude /docker --exclude /servers/flashstor"  ### Exclude docker containers and server symlinks
 
 }
 
