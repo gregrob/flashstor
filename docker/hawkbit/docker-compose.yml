@@ -26,6 +26,7 @@ services:
     volumes:
       - ./data/host/rabbitmq:/var/lib/rabbitmq
     restart: unless-stopped
+    hostname: hawkbit-rabbitmq  # persistent data is written using the hostname, if it is not set, huge disk space will be used
     ports:
       - "15672:15672"
       - "5672:5672"
