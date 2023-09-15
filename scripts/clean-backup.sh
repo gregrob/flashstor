@@ -48,4 +48,3 @@ else
     invalid_parameters
 
 fi
-
