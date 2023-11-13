@@ -12,6 +12,7 @@ FOLDER_MEDIA="media"
 FOLDER_SERVER_BACKUP="server-backup"
 
 FOLDER_SERVER="server"
+FOLDER_SERVER_MOUNTS="server-mounts"
 
 
 # Invalid parameters
@@ -23,6 +24,7 @@ invalid_parameters () {
     printf "  ${FOLDER_SERVER_BACKUP}\n"
     printf "\n"
     printf "  ${FOLDER_SERVER}\n"
+    printf "  ${FOLDER_SERVER_MOUNTS}\n"
     printf "\n"
 
     # Exit from the script
@@ -43,6 +45,9 @@ elif [ "$1" = ${FOLDER_SERVER_BACKUP} ]; then
 
 elif [ "$1" = ${FOLDER_SERVER} ]; then
     clean_backup ${FOLDER_SERVER}
+
+elif [ "$1" = ${FOLDER_SERVER_MOUNTS} ]; then
+    clean_backup ${FOLDER_SERVER_MOUNTS}
 
 else
     invalid_parameters
