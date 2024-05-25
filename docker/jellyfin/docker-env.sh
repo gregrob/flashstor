@@ -23,6 +23,9 @@ then
     export ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$(cat ./secrets/local_unsorted_media_path.secret)
     echo "Exported ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA=$ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA"
 
+    export ENV_JELLYFIN_LOCAL_HOME_VIDEOS=$(cat ./secrets/local_home_videos.secret)
+    echo "Exported ENV_JELLYFIN_LOCAL_HOME_VIDEOS=$ENV_JELLYFIN_LOCAL_HOME_VIDEOS"
+
     echo ""
 
 else

@@ -33,7 +33,8 @@ services:
       # Libraries
       - ${ENV_JELLYFIN_LOCAL_SORTED_MEDIA:?err}:/media/sorted:ro
       - ${ENV_JELLYFIN_LOCAL_UNSORTED_MEDIA:?err}:/media/unsorted:ro
-    
+      - ${ENV_JELLYFIN_LOCAL_HOME_VIDEOS:?err}:/media/home-video:ro
+
     devices:     
       - /dev/dri:/dev/dri # hw transcoding
       #- /dev/dri/renderD128:/dev/dri/renderD128 # hw transcoding
