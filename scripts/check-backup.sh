@@ -28,6 +28,7 @@ full_nas_check_static() {
     ### dynamic - check_backup "server"
     check_backup "server-backup"
     ### dynamic check_backup "server-mounts"
+    check_backup "server-secrets"
     check_backup "software"
     check_backup "tftp"
 
@@ -41,7 +42,7 @@ full_nas_check_static() {
 # Full check of the NAS - dynamic folders
 full_nas_check_dynamic() {
     check_backup "server" "--exclude /docker --exclude /servers/flashstor"  ### Exclude docker containers and server symlinks
-    check_backup "server-mounts"
+    check_backup "server-mounts" "--exclude /application/frigate-poseidon/media" ### Exclude frigate clips
 }
 
 
