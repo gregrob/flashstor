@@ -18,6 +18,7 @@ FOLDER_VIDEO="video"
 
 FOLDER_SERVER="server"
 FOLDER_SERVER_MOUNTS="server-mounts"
+FOLDER_SERVER_SECRETS="server-secrets"
 
 
 # Invalid parameters
@@ -35,6 +36,7 @@ invalid_parameters () {
     printf "\n"
     printf "  ${FOLDER_SERVER}\n"
     printf "  ${FOLDER_SERVER_MOUNTS}\n"
+    printf "  ${FOLDER_SERVER_SECRETS}\n"
     printf "\n"
 
     # Exit from the script
@@ -73,6 +75,9 @@ elif [ "$1" = ${FOLDER_SERVER} ]; then
 
 elif [ "$1" = ${FOLDER_SERVER_MOUNTS} ]; then
     clean_backup ${FOLDER_SERVER_MOUNTS}
+
+elif [ "$1" = ${FOLDER_SERVER_SECRETS} ]; then
+    clean_backup ${FOLDER_SERVER_SECRETS}
 
 else
     invalid_parameters
