@@ -15,6 +15,7 @@ FOLDER_SCANNER_OUTPUT="scanner-output"
 FOLDER_SERVER_BACKUP="server-backup"
 FOLDER_TRANSFER="transfer"
 FOLDER_VIDEO="video"
+FOLDER_WEB="Web"
 
 FOLDER_SERVER="server"
 FOLDER_SERVER_MOUNTS="server-mounts"
@@ -33,6 +34,7 @@ invalid_parameters () {
     printf "  ${FOLDER_SERVER_BACKUP}\n"
     printf "  ${FOLDER_TRANSFER}\n"
     printf "  ${FOLDER_VIDEO}\n"
+    printf "  ${FOLDER_WEB}\n"
     printf "\n"
     printf "  ${FOLDER_SERVER}\n"
     printf "  ${FOLDER_SERVER_MOUNTS}\n"
@@ -69,6 +71,9 @@ elif [ "$1" = ${FOLDER_TRANSFER} ]; then
 
 elif [ "$1" = ${FOLDER_VIDEO} ]; then
     clean_backup ${FOLDER_VIDEO}
+
+elif [ "$1" = ${FOLDER_WEB} ]; then
+    clean_backup ${FOLDER_WEB}
 
 elif [ "$1" = ${FOLDER_SERVER} ]; then
     clean_backup ${FOLDER_SERVER}
