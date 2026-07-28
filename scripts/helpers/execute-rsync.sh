@@ -39,6 +39,7 @@ COL_RESET='\033[0m'                   # No colour
 # Base options for rsync
 OPT_BASE_RSYNC_DR='-nrvh --delete'    # Dry run sync
 OPT_BASE_RSYNC_EX='-rvh --delete'     # Execute sync
+#OPT_BASE_RSYNC_EX='-rvh --delete --existing --ignore-existing'     # Execute sync but only deleting extra files - usefull when disk is full
 
 
 
