@@ -10,6 +10,8 @@ source ${FOLDER_HELPERS}/execute-rsync.sh ${FOLDER_HELPERS}
 # Full check of the NAS - static folders
 full_nas_check_static() {
     check_backup "appliances"
+    check_backup "arr"
+    check_backup "arr-prv"
     check_backup "backup"
     check_backup "camera-output"
     check_backup "development"
@@ -26,6 +28,7 @@ full_nas_check_static() {
     check_backup "qmailagent"
     check_backup "scanner-output"
     ### dynamic - check_backup "server"
+    check_backup "server-ansible"
     check_backup "server-backup"
     ### dynamic check_backup "server-mounts"
     check_backup "server-secrets"
